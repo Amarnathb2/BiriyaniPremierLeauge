@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biryani Premier League</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./Image/chef_biryani_logo.png" class="logo" alt="Chef Holding Biryani">
+        </div>
+        <h1 class="">Biryani Premier League</h1>
+    </header>
+    <div class="menu-bar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">SignUp</a></li>
+        </ul>
+        
+    </div>
+    <div class="container">
+        <main>
+            <section class="login" >
+                <form>
+                    <h3>Contact Us</h3>
+            
+                    <label for="name">Name</label>
+                    <input type="text" id="name">
+                    <span id="name-error" class="text-danger error-message"></span>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email">
+                    <span id="email-error" class="text-danger error-message"></span>
+
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message"></textarea>
+                    <span id="message-error" class="text-danger error-message"></span>
+
+
+                    <button>Send</button>
+                    
+                </form>
+            </section>
+           
+        </main>
+        
+    </div>
+    <footer>
+        <p>Location: 1234 Food Street, Culinary City, FL 56789</p>
+        <p>&copy; 2025 Food Selection. All rights reserved.</p>
+        <p>Contact us at <a href="mailto:support@foodselection.com">support@foodselection.com</a></p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let message = document.querySelector("textarea[name='message']");
+    
+    let nameError = document.getElementById("name-error");
+    let emailError = document.getElementById("email-error");
+    let messageError = document.getElementById("message-error");
+    
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+    
+    let isValid = true;
+    
+    if (name.value.trim() === "") {
+        nameError.textContent = "Please enter your name.";
+        isValid = false;
+    }
+    
+    if (email.value.trim() === "") {
+        emailError.textContent = "Please enter your email.";
+        isValid = false;
+    } else if (!validateEmail(email.value.trim())) {
+        emailError.textContent = "Please enter a valid email address.";
+        isValid = false;
+    }
+    
+    if (message.value.trim() === "") {
+        messageError.textContent = "Please enter your message.";
+        isValid = false;
+    }
+    
+    if (isValid) {
+        alert("Form submitted successfully!");
+        this.submit(); // Submit the form if all validations pass
+    }
+});
+
+function validateEmail(email) {
+    let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+</script>
